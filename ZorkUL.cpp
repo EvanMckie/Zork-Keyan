@@ -41,7 +41,12 @@ void ZorkUL::createRooms()  {
     c1 = new Room("c1");
     //West
     w1 = new Room("w1");
-
+    w2 = new Room("w2");
+    w3 = new Room("w3");
+    w2n1 = new Room("w2n1");
+    w3n2 = new Room("w3n2");
+    w4 = new Room("w4");
+	
 //             (N, E, S, W)
     // Centre
     c1->setExits(n1, NULL, s1, e1);
@@ -65,8 +70,12 @@ void ZorkUL::createRooms()  {
     e2n->setExits(NULL, NULL, e2, e1n);
     e3->setExits(NULL, NULL, NULL, e2);
     // West
-    w1->setExits(NULL, NULL, NULL, NULL);
-
+    w1->setExits(w2, c1, NULL, NULL);
+    w2->setExits(w2n1,NULL,w1,w3);
+    w3->setExits(w3n2,w2,NULL,w4);
+    w4->setExits(NULL,w3,NULL,NULL);
+    w2n1->setExits(NULL,NULL,w2,w3n2);
+    w3n2->setExits(NULL,w2n1,w3,NULL);
 
         currentRoom = c1;
 }
